@@ -1,0 +1,173 @@
+---
+title: "Discussion 4: Probability Distributions"
+output: html_notebook
+---
+
+# Data taken from: 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+athletes1990_2020 <- read_csv("ForbesRichestAthletes1990-2020.csv")
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "tennis")
+    athletes1990_2020$Sport[i] = "Tennis"
+
+for(i in 1:301)  
+  if(athletes1990_2020$Sport[i] == "soccer")
+      athletes1990_2020$Sport[i] = "Soccer"
+
+for(i in 1:301)  
+  if(athletes1990_2020$Sport[i] == "cycling")
+      athletes1990_2020$Sport[i] = "Cycling"
+
+for(i in 1:301)  
+  if(athletes1990_2020$Sport[i] == "motorcycle gp")
+    athletes1990_2020$Sport[i] = "Motorcycle GP"
+
+for(i in 1:301)  
+  if(athletes1990_2020$Sport[i] == "ice hockey")
+    athletes1990_2020$Sport[i] = "Hockey"
+
+for(i in 1:301)  
+  if(athletes1990_2020$Sport[i] == "Ice Hockey")
+    athletes1990_2020$Sport[i] = "Hockey"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "golf")
+    athletes1990_2020$Sport[i] = "Golf"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "F1 racing")
+    athletes1990_2020$Sport[i] = "F1 Racing"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "boxing")
+    athletes1990_2020$Sport[i] = "Boxing"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "basketball")
+    athletes1990_2020$Sport[i] = "NBA"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "baseball")
+    athletes1990_2020$Sport[i] = "Baseball"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "Auto Racing (Nascar)")
+    athletes1990_2020$Sport[i] = "Auto Racing"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "auto racing")
+    athletes1990_2020$Sport[i] = "Auto Racing"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "Auto racing")
+    athletes1990_2020$Sport[i] = "Auto Racing"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "American Football / Baseball")
+    athletes1990_2020$Sport[i] = "American Football"
+
+for(i in 1:301)
+  if(athletes1990_2020$Sport[i] == "Basketball")
+    athletes1990_2020$Sport[i] = "NBA"
+
+for(i in 1:301)  
+  if(athletes1990_2020$Sport[i] == "F1 Racing")
+    athletes1990_2020$Sport[i] = "F1 Motorsports"
+
+athletes1990_2020
+```
+
+
+# Question 1 : Which sport has the most highest paid athletes?
+
+```{r}
+ggplot(athletes1990_2020, aes(x= Sport, fill = Sport))+
+  geom_histogram(stat = "count")+
+  coord_flip()+
+  theme(legend.position = "none")+
+  labs(title = "Most Highest Paid Athletes in Sports", y = "Athletes", subtitle = "1990 - 2020")
+```
+```{r}
+message("Mean: ", mean(athletes1990_2020$Earnings))
+message("Median: ", mean(athletes1990_2020$Earnings))
+message("Standard Deviation: ", sd(athletes1990_2020$Earnings))
+message("Range: ", max(athletes1990_2020$Earnings) - min(athletes1990_2020$Earnings))
+```
+
+
+# Question 2 : What countries have the highest paid athletes?
+```{r}
+ggplot(athletes1990_2020, aes(x= Nationality, fill = Nationality))+
+  geom_histogram(stat = "count")+
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  labs(title = "Countries with the Highest Paid Athletes", y = "Athletes", x = "Country", subtitle = "1990 - 2020")
+```
+```{r}
+message("Mean: ", mean(athletes1990_2020$Earnings))
+message("Median: ", mean(athletes1990_2020$Earnings))
+message("Standard Deviation: ", sd(athletes1990_2020$Earnings))
+message("Range: ", max(athletes1990_2020$Earnings) - min(athletes1990_2020$Earnings))
+```
+
+
+# Question 3 : Which sport earned the most?
+```{r}
+ggplot(athletes1990_2020, aes(x= Sport, y = Earnings, fill = Sport))+
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  geom_col(stat = "count")+
+  labs(y= "Earnings (in Millions)", title = "Earnings per Sport", subtitle = "1990 - 2020")
+```
+
+```{r}
+message("Mean: ", mean(athletes1990_2020$Earnings))
+message("Median: ", mean(athletes1990_2020$Earnings))
+message("Standard Deviation: ", sd(athletes1990_2020$Earnings))
+message("Range: ", max(athletes1990_2020$Earnings) - min(athletes1990_2020$Earnings))
+```
+
+# Question 4 : Which country earned the most?
+```{r}
+ggplot(athletes1990_2020, aes(x= Nationality, y = Earnings, fill = Nationality))+
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  geom_col(stat = "count")+
+  labs(y= "Earnings (in Millions)", title = "Earnings per Country", subtitle = "1990 - 2020")
+```
+
+
+```{r}
+message("Mean: ", mean(athletes1990_2020$Earnings))
+message("Median: ", mean(athletes1990_2020$Earnings))
+message("Standard Deviation: ", sd(athletes1990_2020$Earnings))
+message("Range: ", max(athletes1990_2020$Earnings) - min(athletes1990_2020$Earnings))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
