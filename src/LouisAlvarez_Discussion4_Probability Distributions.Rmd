@@ -12,73 +12,23 @@ library(tidyverse)
 ```{r}
 athletes1990_2020 <- read_csv("ForbesRichestAthletes1990-2020.csv")
 
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "tennis")
-    athletes1990_2020$Sport[i] = "Tennis"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "tennis"] <- "Tennis"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "soccer"] <- "Soccer"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "cycling"] <- "Cycling"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "motorcycle gp"] <- "Motorcycle GP"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "ice hockey"] <- "Hockey"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "golf"] <- "Golf"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "F1 racing"] <- "F1 Racing"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "boxing"] <- "Boxing"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "basketball"] <- "NBA"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "baseball"] <- "Baseball"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "Auto Racing (Nascar)"] <- "Auto Racing"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "auto racing"] <- "Auto Racing"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "Auto racing"] <- "Auto Racing"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "American Football / Baseball"] <- "American Football"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "Basketball"] <- "NBA"
+athletes1990_2020$Sport[athletes1990_2020$Sport == "F1 Racing"] <- "F1 Motorsports"
 
-for(i in 1:301)  
-  if(athletes1990_2020$Sport[i] == "soccer")
-      athletes1990_2020$Sport[i] = "Soccer"
-
-for(i in 1:301)  
-  if(athletes1990_2020$Sport[i] == "cycling")
-      athletes1990_2020$Sport[i] = "Cycling"
-
-for(i in 1:301)  
-  if(athletes1990_2020$Sport[i] == "motorcycle gp")
-    athletes1990_2020$Sport[i] = "Motorcycle GP"
-
-for(i in 1:301)  
-  if(athletes1990_2020$Sport[i] == "ice hockey")
-    athletes1990_2020$Sport[i] = "Hockey"
-
-for(i in 1:301)  
-  if(athletes1990_2020$Sport[i] == "Ice Hockey")
-    athletes1990_2020$Sport[i] = "Hockey"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "golf")
-    athletes1990_2020$Sport[i] = "Golf"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "F1 racing")
-    athletes1990_2020$Sport[i] = "F1 Racing"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "boxing")
-    athletes1990_2020$Sport[i] = "Boxing"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "basketball")
-    athletes1990_2020$Sport[i] = "NBA"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "baseball")
-    athletes1990_2020$Sport[i] = "Baseball"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "Auto Racing (Nascar)")
-    athletes1990_2020$Sport[i] = "Auto Racing"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "auto racing")
-    athletes1990_2020$Sport[i] = "Auto Racing"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "Auto racing")
-    athletes1990_2020$Sport[i] = "Auto Racing"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "American Football / Baseball")
-    athletes1990_2020$Sport[i] = "American Football"
-
-for(i in 1:301)
-  if(athletes1990_2020$Sport[i] == "Basketball")
-    athletes1990_2020$Sport[i] = "NBA"
-
-for(i in 1:301)  
-  if(athletes1990_2020$Sport[i] == "F1 Racing")
-    athletes1990_2020$Sport[i] = "F1 Motorsports"
 
 athletes1990_2020
 ```
@@ -89,8 +39,8 @@ athletes1990_2020
 ```{r}
 ggplot(athletes1990_2020, aes(x= Sport, fill = Sport))+
   geom_histogram(stat = "count")+
-  coord_flip()+
-  theme(legend.position = "none")+
+  #coord_flip()+
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
   labs(title = "Most Highest Paid Athletes in Sports", y = "Athletes", subtitle = "1990 - 2020")
 ```
 ```{r}
